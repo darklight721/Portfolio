@@ -10,7 +10,6 @@ body
 	
 	background-image:url("bg.png");
 	
-	
 	display: -webkit-box;
 	display: -moz-box:
 	display: -o-box;
@@ -30,13 +29,13 @@ body
 #container
 {
 	padding:25px;
+	max-width:800px;
+	margin:auto;
 	
-	font-family:Share,cursive;
+	font-family:Share,tahoma;
 	font-size:100%;
 	/*color:#827259;*/
 	color:#4A4747;
-	
-	text-shadow:0px 0px 5px rgba(127,127,127,0.5);
 }
 
 #container p
@@ -44,23 +43,58 @@ body
 	font-size:2em;
 	text-align:justify;
 	line-height:130%;
+	
+	cursor:default;
 }
 
 #container nav
 {
 	font-size:1.7em;
 	text-align:center;
+	
+	cursor:pointer;
 }
 
 .blur
 {
 	color:transparent;
-	text-shadow:0px 0px 20px #000;
+	text-shadow:0px 0px 20px #4A4747;
+	
+	-webkit-transition-property: text-shadow, color;
+	-webkit-transition-duration: 1s;
+	-webkit-transition-timing-function: ease-in-out;
+	
+	-moz-transition-property: text-shadow, color;
+	-moz-transition-duration: 1s;
+	-moz-transition-timing-function: ease-in-out;
+	
+	-o-transition-property: text-shadow, color;
+	-o-transition-duration: 1s;
+	-o-transition-timing-function: ease-in-out;
+	
+	transition-property: text-shadow, color;
+	transition-duration: 1s;
+	transition-timing-function: ease-in-out;
 }
 
 .unblur
 {
 	color:#4A4747;
-	
 	text-shadow:0px 0px 5px rgba(127,127,127,0.5);
+	
+	-webkit-transition-property: text-shadow, color;
+	-webkit-transition-duration: 1s;
+	-webkit-transition-timing-function: ease-in-out;
+	
+	-moz-transition-property: text-shadow, color;
+	-moz-transition-duration: 1s;
+	-moz-transition-timing-function: ease-in-out;
+	
+	-o-transition-property: text-shadow, color;
+	-o-transition-duration: 1s;
+	-o-transition-timing-function: ease-in-out;
+	
+	transition-property: text-shadow, color;
+	transition-duration: 1s;
+	transition-timing-function: ease-in-out;
 }
