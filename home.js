@@ -1,55 +1,67 @@
 document.addEventListener("DOMContentLoaded", function(){
-	var me = document.getElementById("me");
-	var skill = document.getElementById("skill");
-	var project = document.getElementById("project");
-	var contact = document.getElementById("contact");
+	
+	var blurClass = "blur";
+	var unblurClass = "unblur";
+	
+	var elemNames = ["me","skills","projects","contacts","summary"];
 	var texts = document.getElementById("texts");
 	
-	var blur = function(elemName) {
-		if (elemName === "me")
+	// helper function that loops an array
+	var loopArray = function(array,callback) {
+		for (var i = 0; i < array.length; i++)
 		{
-			texts.className = "";
-			var elemsBlur = document.querySelectorAll("#texts span");
-			for(var i = 0; i < elemsBlur.length; i++)
-			{
-				elemsBlur[i].className = "";
-				
-			}
-			
-			
-		}
-		else
-		{
-			texts.className = "blur";
-			var elemsBlur = document.querySelectorAll("#texts span");
-			for(var i = 0; i < elemsBlur.length; i++)
-			{
-				elemsBlur[i].className = "blur";
-			}
-			
-			var elems = document.getElementsByName(elemName);
-			for(var i = 0; i < elems.length; i++)
-			{
-				elems[i].className = "unblur";
-			}
+			callback(i);
 		}
 	};
 	
-	me.addEventListener("click",function(){
-		blur("me");
-	});
+	// sets the classname of the elems returned by the query
+	var setClassName = function(query,className) {
+		var elems = document.querySelectorAll(query);
+		loopArray(elems,function(index){
+			elems[index].className = className;
+		});
+	};
 	
-	skill.addEventListener("click",function(){
-		blur("skills");
-	});
+	// blur/unblur the guven elemName
+	var blur = function(elemName) {
+		if (elemName === "me")
+		{
+			texts.className = unblurClass;
+			
+			setClassName("#container p span",unblurClass);
+		}
+		else
+		{
+			texts.className = blurClass;
+			
+			setClassName("#container p :not([name="+ elemName +"])",blurClass);
+			
+			setClassName("#container p [name="+ elemName +"]",unblurClass);
+		}
+	};
 	
-	project.addEventListener("click",function(){
-		blur("projects");
-	});
+	// detect if useragent is iOS
+	var event;
+	if (navigator.userAgent.indexOf('iPad') != -1 || navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('iPod') != -1)
+	{
+		event = "click";
+	}
+	else
+	{
+		event = "mouseover";
+	}
 	
-	contact.addEventListener("click",function(){
-		blur("contacts");
+	// set event listeners to the elems in nav
+	loopArray(elemNames,function(index){
+		var elem = document.getElementById(elemNames[index]);
+		elem.addEventListener(event,function(){
+			blur(elemNames[index]);
+			
+			// unselect previous selection
+			setClassName("#container nav :not(#"+ elemNames[index] +")","");
+			// set selection to the current elem
+			elem.className = "selected";			
+		},false);
 	});
-	
 	
 }, false);
