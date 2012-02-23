@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
 	
-	var blurClass = "blur"
+	var blurClass = "blur";
 	var unblurClass = "unblur";
 	
 	var elemNames = ["me","skills","projects","contacts","summary"];
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
 			// unselect previous selection
 			setClassName("#container nav :not(#"+ elemNames[index] +")","");
 			// set selection to the current elem
-			elem.className = "selected"			
+			elem.className = "selected";			
 		},false);
 	});
 	
