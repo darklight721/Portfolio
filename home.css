@@ -35,8 +35,8 @@ body
 	
 	font-family:Share,tahoma;
 	font-size:100%;
-	/*color:#827259;*/
 	color:#4A4747;
+	text-shadow:0px 0px 5px rgba(127,127,127,0.5);
 }
 
 #container p
